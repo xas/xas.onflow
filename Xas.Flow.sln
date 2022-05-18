@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xas.Flow.ProtoLibs", "src\Xas.Flow.ProtoLibs\Xas.Flow.ProtoLibs.csproj", "{501BD240-6D97-4FB4-9F4B-EBBE22745C38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xas.Flow.Api", "src\Xas.Flow.Api\Xas.Flow.Api.csproj", "{D874C643-96A2-4ABC-A151-5F7B558788DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{501BD240-6D97-4FB4-9F4B-EBBE22745C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501BD240-6D97-4FB4-9F4B-EBBE22745C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501BD240-6D97-4FB4-9F4B-EBBE22745C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501BD240-6D97-4FB4-9F4B-EBBE22745C38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D874C643-96A2-4ABC-A151-5F7B558788DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D874C643-96A2-4ABC-A151-5F7B558788DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D874C643-96A2-4ABC-A151-5F7B558788DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D874C643-96A2-4ABC-A151-5F7B558788DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {405E60B8-1E82-4877-B068-336852D02E04}
+	EndGlobalSection
+EndGlobal

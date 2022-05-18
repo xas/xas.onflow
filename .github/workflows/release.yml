@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release
+
+# Controls when the workflow will run
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
+    - "v[0-9]+.[0-9]+.[0-9]+-beta[0-9][0-9]"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Extract release notes
+        run: |
+          git log --pretty=format:'%d %s' ${GITHUB_REF} | perl -pe 's| \(.*tag: v(\d+.\d+.\d+(-beta\d{2})?)(, .*?)*\)|\n## \1\n|g' > RELEASE-NOTES
+        
+      - name: Set VERSION variable from tag
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+
+      # Runs a set of commands using the runners shell
+      - name: install dotnet core
+        uses: actions/setup-dotnet@v2.1.0
+
+      - name: Compile lib
+        run: |
+          dotnet pack ./src/Xas.Flow.ProtoLibs/Xas.Flow.ProtoLibs.csproj -c Release -o ./output /p:Version=${VERSION}
+          dotnet pack ./src/Xas.Flow.Api/Xas.Flow.Api.csproj -c Release -o ./output /p:Version=${VERSION}
+
+      - name: nuget publishing
+        run: dotnet nuget push ./output/*.nupkg --api-key ${{secrets.NUGET_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
+        env:
+          GITHUB_TOKEN: ${{ secrets.NUGET_TOKEN }}
