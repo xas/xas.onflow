@@ -8,8 +8,12 @@ This project use [NSwag](https://github.com/RicoSuter/NSwag) MSBuild generator t
 
 The namespace used is `Xas.Flow.Api`.
 
+Package can be installed with the command : `dotnet add package Xas.Flow.Api`
+
 ## Xas.Flow.ProtoLibs
 
 This project generate the C# classes defined by the [Flow Protobuf](https://github.com/onflow/flow/tree/master/protobuf/flow) specifications. This project ignores the `legacy` folder.
 
 The namespace used is `Flow`.
+
+Package can be installed with the command : `dotnet add package Xas.Flow.ProtoLibs`
